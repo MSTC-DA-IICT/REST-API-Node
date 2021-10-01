@@ -1,6 +1,6 @@
 # REST APIs in node.js
 
-This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source contribution. Make the best out of the ongoing Hacktoberfest 2021 by contributing to for-the-community projects. This project participates in Hacktoberest 2021 and all successful PRs made here will be counted among the at least 4 successful pull requests that you'd need to make in order to be eligible for the Hacktoberfest appreciation (plant a tree / get a tee).
+This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source contribution. Make the best out of the ongoing Hacktoberfest 2021 by contributing to for-the-community projects. This project participates in Hacktoberest 2021 and all successful PRs made here will be counted among the at least 4 successful pull requests that you'd need to make in order to be eligible for the Hacktoberfest appreciation.
 
 
 <img src="https://res.cloudinary.com/dbvyvfe61/image/upload/v1619799241/Cicada%203301:%20Reinvented/MSTC_ffmo9v.png" width="10%">
@@ -10,8 +10,6 @@ This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source cont
 >This is a Node.js and Express.js project for Hactoberfest 2021, maintained by MSTC DA-IICT. The project focuses on making API for food ordering system. Other thhan technologies mentioned below it also includes learning about different http methods (GET, POST, PUT, DELETE) and basic CRUD operations.
 
 >We are trying to create an open source learning media from which every student can learn, We want it to be as much user friendly as possible.
-
->We need a web developer :technologist: to help us solving these issues.
 
 <br><br>
 ### :hammer_and_wrench: Skills
@@ -30,7 +28,7 @@ This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source cont
 * New and creative approches are appreciable.
 * Intiate a `PR`.
 
-Happy Developing! :innocent:
+Happy Developing!
 
 <br><br>
 
