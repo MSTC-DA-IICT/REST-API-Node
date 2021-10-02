@@ -16,7 +16,7 @@ mongoose.connection.on("error", () => {
   console.log("error connecting to mongo", err);
 });
 
-var indexRouter = require("./routes/index");
+var indexRouter = require("./routes/Home");
 var usersRouter = require("./routes/users");
 const PORT = 3000;
 var app = express();
