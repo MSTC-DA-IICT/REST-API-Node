@@ -19,4 +19,19 @@ router.route('/delete/:id').delete((req,res) => {
 })
 
 
+
+// update order
+router.route('/update/:id').post((req,res) => {
+    
+  users.foreach((user,idx) =>{ // loop over all orders and find order with given id
+    if(user.id == req.params.id){
+      // merge object with requested updation
+      users[idx] = {
+        ...users[idx],
+        ...(req.body)
+      }
+      res.json("Order updated!")
+    }
+  });
+})
 module.exports = router;
