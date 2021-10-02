@@ -42,6 +42,22 @@ router.route('/delete/:id').delete((req,res) => {
   .catch(error => res.status(400).json('Error : ' + error)); // If there is no order with requested id then throw error (Bad request)
 })
 
+// update order - MongoDB version
+router.route('/update/:id').post((req,res) => {
+    
+  Order.findById(req.params.id)
+  .then(order => {
+      order.food = req.body.food; 
+      order.customerName = req.body.customerName;
+      order.quantity = req.body.quantity;
+      
+      order.save()
+      .then(() => res.json("Order updated!"))
+      .catch(error => res.status(200).json('Error : ' + error)); // This indicates that request is succeeded!
+  })
+  .catch(error => res.status(400).send('Error : ' + error)); // If there is no user with requested id then throw error (Bad request)
+})
+
 
 // delete order
 router.route('/delete/:id').delete((req,res) => {
