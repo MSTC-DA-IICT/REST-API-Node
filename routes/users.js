@@ -2,8 +2,6 @@ var express = require("express");
 var router = express.Router();
 const Order = require("../models/food.model");
 
-var users; // will store all users
-
 /* GET users listing. */
 //Get all the orders
 router.get("/", function (req, res, next) {
@@ -15,6 +13,7 @@ router.get("/", function (req, res, next) {
       console.log(err);
     });
 });
+
 //Add an Order
 router.post("/", function (req, res, next) {
   const { food, customerName, foodQuantiy } = req.body;
@@ -35,6 +34,14 @@ router.post("/", function (req, res, next) {
       console.log(err);
     });
 });
+
+// delete order - MongoDB version
+router.route('/delete/:id').delete((req,res) => {
+  Order.findByIdAndDelete(req.params.id)
+  .then(() => res.json("Order deleted!"))
+  .catch(error => res.status(400).json('Error : ' + error)); // If there is no order with requested id then throw error (Bad request)
+})
+
 
 // delete order
 router.route('/delete/:id').delete((req,res) => {
