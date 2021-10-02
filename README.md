@@ -28,6 +28,10 @@ This project is a sincere attempt by MSTC, DA-IICT to encourage Open Source cont
 * New and creative approches are appreciable.
 * Intiate a `PR`.
 
+### 📚 Reference Material
+* [YelpCamp](https://github.com/Colt/YelpCamp) : This is from the famous course by Colt Steele on Full Stack web dvelopment. Please Refer the repo to see initial commits, this repo follows similar structure.
+* [Express.js](https://expressjs.com/en/4x/api.html) : Official Express.js documentation
+* [Mongoose](https://mongoosejs.com/docs/guide.html) : Official Mongoose ODM documentation
 Happy Developing!
 
 <br><br>
