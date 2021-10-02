@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/order.css' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+</head>
+<body>
+    <h1>Place an Order</h1>
+
+    <div>
+        <form method="POST" action="/users">
+          <label for="fname">Food Name</label>
+          <input type="text" id="food" name="food" placeholder="Food Name" required>
+      
+          <label for="cname">Customer Name</label>
+          <input type="text" id="customerName" name="customerName" placeholder="Customer Name" required>
+      
+          <label for="quantity">Quantity</label>
+          <input type="number" step="1" min="1" max="" name="foodQuantiy" value="1" title="food Quantiy" inputmode="">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+</body>
+</html>
