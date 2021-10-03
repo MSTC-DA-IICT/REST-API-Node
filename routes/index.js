@@ -5,10 +5,15 @@ var router = express.Router();
 
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
-
+});
 
 router.get('/order', function(req, res, next) {
   res.render('order', { title: 'Express' });
+
+});
+
+router.get('/updateOrder', function(req, res, next) {
+  res.render('updateOrder', { title: 'Express' });
 
 });
 
