@@ -3,26 +3,32 @@ var router = express.Router();
 const Order = require("../models/food.model");
 
 //Get all the orders
+var all_orders; // stores all orders
+var total_orders = 0; // stores how many orders are there
+
 router.get("/", function (req, res, next) {
   var sort = {};
   sort['_id'] = -1; 
   Order.find({}).sort(sort).exec( function(err, orders){
-    if(err){
+    if(err){  // error catching
       return res.status(400).send({
         status: 0,
-        message: "Something went wrong"
+        message: "Something went wrong!"
       })
     } else{
       if (orders.length) {
+        all_orders = orders;
+        total_orders = orders.length;
         return res.json({
           status: 1,
           "Total Records": orders.length,
-          data: orders
+          data: orders,
+          message: "All orders are retrived!"
         });
       }
-      return res.status(200).send({
+      return res.status(200).send({ // if there is no such order then throw request succeeded
         status: 1,
-        message: 'No Data found'
+        message: 'No orders exist!'
       })
     }
   })
