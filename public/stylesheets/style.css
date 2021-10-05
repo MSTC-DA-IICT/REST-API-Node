@@ -7,7 +7,7 @@ a {
   background-color: gray;
 } */
 
-body{
+body {
   background-color: #ecedd1;
 }
 .footer-padding {
@@ -27,4 +27,107 @@ body{
   margin-top: 25px;
   font-size: 12px;
   color: #fff;
+}
+
+/*--- NAVBAR ---*/
+.navbar-default {
+  background: #1abc9c;
+  border-bottom: 1px solid #c9c6c6;
+  height: 65px;
+  margin:auto;
+  
+}
+.navbar-header .navbar-toggle {
+  margin-top: 12px;
+}
+.navbar-header .navbar-brand {
+  letter-spacing: -0.03em;
+  height: 60px;
+  padding: 30px 10px 0 0px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 0px;
+  color: #fefefe;
+  white-space: nowrap;
+}
+.navbar-default .navbar-brand:hover {
+  color: #fefefe;
+}
+.navbar-default .navbar-nav {
+  background: #1abc9c;
+  margin-top: 0;
+}
+.navbar-default .navbar-nav > li > a {
+  color: black;
+  padding: 10px;
+  font-family: "Montserrat", serif;
+  font-weight: 400;
+}
+
+.navbar-default .navbar-nav > li > a.selected {
+  transition: all 1s linear;
+}
+
+@media screen and (max-width: 768px) {
+  .icon{
+    display: none;
+  }
+
+  .navbar-header .navbar-brand {
+    letter-spacing: -0.03em;
+    height: 60px;
+    margin-left: 20px;
+    padding: 30px 10px 0 0px;
+    font-size: 36px;
+    line-height: 0px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-default {
+    height: 100px;
+  }
+  .navbar-header {
+    width: 100%;
+  }
+  .navbar-header .navbar-brand {
+    height: 70px;
+    padding: 40px 0 0 15px;
+    font-size: 42px;
+  }
+  .navbar-default .navbar-nav > li > a {
+    padding: 0px 20px 9px 0;
+  }
+  .navbar-default .navbar-nav > li > a:hover {
+    background-color: transparent;
+  }
+  .icon{
+    position: relative;
+    float: right;
+    margin-top: -1.7em;
+    font-size: 50px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-default {
+    height: 106px;
+  }
+  .navbar-header .navbar-brand {
+    height: 68px;
+    padding: 40px 0 5px 15px;
+    font-size: 44px;
+  }
+  .navbar-default .navbar-nav > li > a {
+    padding: 5px 25px 9px 0;
+  }
+  .icon{
+    position: relative;
+    float: right;
+    margin-top: -1.7em;
+    font-size: 50px;
+  }
 }
