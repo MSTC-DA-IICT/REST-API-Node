@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema.Types;
 const User = mongoose.model(
   "User",
   new mongoose.Schema({
-    name: {
+    username: {
       type: String,
       required: true,
     },
@@ -16,6 +16,11 @@ const User = mongoose.model(
       type: Number,
       required: true,
     },
+    password: {
+      type: String,
+    },
+  }, {
+    toJSON: { getters: true }
   })
 );
 
