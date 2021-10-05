@@ -15,7 +15,10 @@
           <p class="navbar-brand">XYZ Resturant</p>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li id="home"><a href="#">🍔ORDER</a></li>
+          <% if(!(loggedIn && loggedIn==true)){%>
+            <li id="home"><a href="/login">👤LOGIN</a></li>
+          <%}%>
+          <li id="home"><a href="/order">🍔ORDER</a></li>
           <li id="about"><a href="#">🌫PREVIOUS ORDER</a></li>
           <li id="contact"><a href="#">❌Cancel</a></li>
         </ul>

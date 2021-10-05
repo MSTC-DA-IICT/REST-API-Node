@@ -1,129 +1,104 @@
-var express = require("express");
+const bcrypt = require("bcrypt");
+var express = require('express');
 var router = express.Router();
-const Order = require("../models/food.model");
+const passport = require('passport');
+const conf = require('../config/constants');
+const User = require("../models/user.model");
+const { jwtSignUser } = require('../middlewares/jwt');
 
-//Get all the orders
-var all_orders; // stores all orders
-var total_orders = 0; // stores how many orders are there
 
-router.get("/", function (req, res, next) {
-  var sort = {};
-  sort['_id'] = -1; 
-  Order.find({}).sort(sort).exec( function(err, orders){
-    if(err){  // error catching
-      return res.status(400).send({
-        status: 0,
-        message: "Something went wrong!"
-      })
-    } else{
-      if (orders.length) {
-        all_orders = orders;
-        total_orders = orders.length;
-        return res.json({
-          status: 1,
-          "Total Records": orders.length,
-          data: orders,
-          message: "All orders are retrived!"
+
+// Login
+router.post("/login", (req, res, next) => {
+    const {
+        src = '/',
+        username
+    } = req.body;
+    console.log("In login");
+    passport.authenticate("local", function (err, user, info) {
+        if (err) {
+            console.log(1);
+            return res.redirect('/');
+        }
+        if (!user) {
+            console.log(2);
+            return res.redirect('/');
+        }
+        let key = {
+            username: username,
+            id: user._id
+        };
+
+        let token = jwtSignUser(
+            key,
+            conf.authentication.validity,
+            conf.authentication.jwtSecret
+        );
+        res.cookie('login', key.id, { maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('user', token, { maxAge: 24 * 60 * 60 * 1000 });
+        console.log(1111);
+        console.log(src);
+        return res.redirect(`${src}`);
+    })(req, res, next);
+
+});
+
+// Register
+router.post("/register", (req, res, next) => {
+    const {
+        username,
+        email,
+        number,
+        password,
+        src='/'
+    } = req.body;
+    
+    console.log("SRC is");
+    console.log(src);
+    try {
+        const newUser = new User({
+            password,
+            username,
+            email: email.toLowerCase(),
+            number
         });
-      }
-      return res.status(200).send({ // if there is no such order then throw request succeeded
-        status: 1,
-        message: 'No orders exist!'
-      })
-    }
-  })
-})
+        // Hash password before saving in database
+        bcrypt.genSalt(10, (err, salt) => {
+            console.log(salt);
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) {
+                    console.log(err);
+                    return res.redirect('/');
+                }
+                newUser.password = hash;
+                newUser
+                    .save()
+                    .then(user => {
+                        let key = {
+                            username: username,
+                            id: user._id
+                        };
 
-//Push an Order
-router.post("/", function (req, res, next) {
-  var data = req.body;
-  //check for empty value
-  if (!data.food || !data.customerName || !data.quantity) {
-    return res.status(400).json({
-      status: 0,
-      message: 'enter all necessary details'
-    })
-  }
-  var orderData = new Order(data);
-  orderData.save(function(err, result){
-    if(err){
-      return res.status(400).json({
-        status: 0,
-        message: 'something went wrong'
-      })
-    } else{
-      res.json({
-        status: 1,
-        "message": "Order Added successfully",
-        data: result
-    });
-    }
-  })
-})
+                        let token = jwtSignUser(
+                            key,
+                            conf.authentication.validity,
+                            conf.authentication.jwtSecret
+                        );
+                        res.cookie('login', key.id, { maxAge: 24 * 60 * 60 * 1000 });
+                        res.cookie('user', token, { maxAge: 24 * 60 * 60 * 1000 });
+                        return res.redirect(src);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        return res.redirect('/');
+                    });
+            });
+        });
 
-//Delete an Order
-router.route('/delete/:id').delete((req,res) => {
-  var orderId = req.params.id;
-  Order.findOneAndDelete({_id: orderId}).exec(function(err, order){
-    if (err) {
-      return res.status(400).send({
-          status: 0,
-          message: 'something went wrong'
-      })
-    } else{
-      res.json({
-        status: 1,
-        message: "Order deleted successfully",
-        "data": order
-      })
+    } catch (error) {
+        console.log(error);
+        return res.redirect('/');
     }
-  })
-})
 
-//Update an Order
-router.route('/update/:id').post((req,res) => {   
-  var orderId = req.params.id;
-  var data = req.body;
-  Order.findOne({_id: orderId}).exec(function(err, order){
-    if (err) {
-      return res.status(400).send({
-          status: 0,
-          message: 'Order Id is not correct'
-      })
-    } else{
-      if(order){
-        if (data.food) {
-          order.food = data.food
-        }
-        if (data.customerName) {
-          order.customerName = data.customerName;
-        }
-        if (data.quantity) {
-          order.quantity = data.quantity;
-        }
-        order.save(function (err, result) {
-          if (err) {
-            console.log("error----------", err);
-            return res.status(400).send({
-              status: 0,
-              message: err
-            })
-          } else{
-            res.json({
-              status: 1,
-              "message": "Order updated successfully",
-              data: result
-            });            
-          }
-        })
-      } else {
-        return res.json({
-          status: 0,
-          message: 'No Order Stored with this Id '
-        })
-      }
-    }
-  })
-})
-
+});
 module.exports = router;

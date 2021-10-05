@@ -1,13 +1,33 @@
 var express = require("express");
 var router = express.Router();
+const {isUserValid, verifyUser} = require("../middlewares/validateUser");
 
 /* GET home page. */
 
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  let loggedIn = false;
+  if (req.cookies && req.cookies.user && req.cookies.login) {
+    loggedIn = isUserValid(req.cookies.user, req.cookies.login);
+  }
+
+  res.render("index", { title: "Express" , loggedIn});
 });
 
-router.get('/order', function(req, res, next) {
+router.get('/signup', (req, res, next) => {
+  const {
+    src = '/'
+  } = req.query;
+  res.render('signup', { title: 'Express', src });
+});
+
+router.get('/login', (req, res, next) => {
+  const {
+    src = '/'
+  } = req.query;
+  res.render('login', { title: 'Express', src });
+});
+
+router.get('/order', verifyUser,  function(req, res, next) {
   res.render('order', { title: 'Express' });
 
 });
