@@ -1,0 +1,78 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- load fontawesome -->
+    <style>
+        body {
+            padding-top: 80px;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        function ValidateEmail(email) {
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return expr.test(email);
+        };
+        function validateForm() {
+            try {
+                // Validate URL
+                var username = $("#username").val();
+                if (!ValidateEmail(username)){
+                    alert("Please enter a valid email");
+                    return false;
+                }
+                var password = $("#password").val();
+
+                if (!(password && password == null)) {
+                    alert("Password is not valid");
+                    return false;
+                }
+
+                return true;
+            } catch (error) {
+                alert(error);
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <h1><span class="fa fa-sign-in"></span> Login</h1>
+                    <!-- LOGIN FORM -->
+                    <form action="/users/login" method="post">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required
+                            oninvalid="this.setCustomValidity('Email is not valid')"
+                            oninput="this.setCustomValidity('')">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
+                        <input type="hidden" name="src" value="<%=src%>">
+
+                        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                    </form>
+
+                    <hr>
+                    <p>Create an account? <a href="/signup?src=<%=src%>">Signup</a></p>
+                    <p>Or go <a href="/">home</a>.</p>
+        </div>
+
+    
+    </div>
+</body>
+
+</html>
