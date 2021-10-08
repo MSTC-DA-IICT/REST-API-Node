@@ -1,88 +1,165 @@
 <!-- views/signup.ejs -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
     <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
     <!-- load fontawesome -->
     <style>
-        body {
-            padding-top: 80px;
-        }
+      body {
+        padding-top: 80px;
+      }
+
+      /*----Show----*/
+      .form-check-input {
+        margin-top: 5px;
+      }
+
+      .form-check-label {
+        margin-top: 5px;
+        font-family:'Trebuchet MS';
+      }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
+      function validateForm() {
+        try {
+          var password = $("#password").val();
+          var password2 = $("#password2").val();
 
-        function validateForm() {
-            try {
+          if (
+            !(password != null && password2 != null && password == password2)
+          ) {
+            alert("Passwords dont match");
+            return false;
+          }
 
-                var password = $("#password").val();
-                var password2 = $("#password2").val();
-
-                if (!(password != null && password2 != null && password == password2)) {
-                    alert("Passwords dont match");
-                    return false;
-                }
-
-                return true;
-            } catch (error) {
-                alert(error);
-                return false;   
-            }        
+          return true;
+        } catch (error) {
+          alert(error);
+          return false;
         }
+      }
 
+      function showPass1() {
+        var x = document.getElementById("password1");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function showPass2() {
+        var x = document.getElementById("password2");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h1><span class="fa fa-sign-in"></span> SignUp</h1>
+        <!-- SINGUP FORM -->
+        <form
+          action="/users/register"
+          method="post"
+          onsubmit="return validateForm();"
+        >
+          <div class="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              pattern="[A-Za-z0-9]{1,20}"
+              required
+              oninvalid="this.setCustomValidity('UserName should only be alphanumeric')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              required
+              oninvalid="this.setCustomValidity('Email is not valid')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              name="number"
+              pattern="[0-9]{10}"
+              required
+              oninvalid="this.setCustomValidity('Phone number should be valid 10 digit number')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password1"
+              name="password"
+              required
+            />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              onclick="showPass1()"
+            />
+            <label class="form-check-label" for="password1" id="show"
+              >Show password</label
+            >
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password2"
+              name="password2"
+              required
+            />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              onclick="showPass2()"
+            />
+            <label class="form-check-label" for="password2" id="show"
+              >Show password</label
+            >
+          </div>
+          <input type="hidden" name="src" value="<%=src%>" />
 
-        <div class="col-sm-6 col-sm-offset-3">
+          <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+        </form>
 
-            <h1><span class="fa fa-sign-in"></span> Login</h1>
-            <!-- SINGUP FORM -->
-            <form action="/users/register" method="post" onsubmit="return validateForm();">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" id="username" name="username" pattern="[A-Za-z0-9]{1,20}" required
-                    oninvalid="this.setCustomValidity('UserName should only be alphanumeric')"
-                    oninput="this.setCustomValidity('')">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" required
-                    oninvalid="this.setCustomValidity('Email is not valid')"
-                    oninput="this.setCustomValidity('')">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" class="form-control" name="number" pattern="[0-9]{10}" required
-                    oninvalid="this.setCustomValidity('Phone number should be valid 10 digit number')"
-                    oninput="this.setCustomValidity('')">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control"  id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control"  id="password2" name="password2" required>
-                </div>
-                <input type="hidden" name="src" value="<%=src%>">
-
-                <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-            </form>
-
-            <hr>
-            <p>Have account? <a href="/login?src=<%=src%>">Login</a></p>
-            <p>Or go <a href="/">Home</a>.</p>
-        </div>
-
-
+        <hr />
+        <p>Have account? <a href="/login?src=<%=src%>">Login</a></p>
+        <p>Or go <a href="/">Home</a>.</p>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
