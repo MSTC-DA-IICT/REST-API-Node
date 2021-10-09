@@ -35,11 +35,9 @@
           var password = $("#password").val();
           var password2 = $("#password2").val();
 
-          if (
-            !(password != null && password2 != null && password == password2)
-          ) {
-            alert("Passwords dont match");
-            return false;
+          if (password != null && password2 != null && password != password2) {
+            alert("Passwords doesn't match");
+            return true;
           }
 
           return true;

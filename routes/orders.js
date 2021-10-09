@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const ObjectId = require('mongoose').Types.ObjectId;
 const Order = require("../models/food.model");
+const {verifyUser} = require("../middlewares/validateUser");
 
 //Get all the orders
 var all_orders; // stores all orders
@@ -64,23 +65,24 @@ router.post("/", function (req, res, next) {
 })
 
 //Delete an Order
-router.route('/delete/:id').delete((req,res) => {
+router.route("/delete/:id").delete(verifyUser, function (req,res) {
+
+  var orderedBy = ObjectId(req.cookies.login);
   var orderId = req.params.id;
-  Order.findOneAndDelete({_id: orderId}).exec(function(err, order){
+  
+  Order.findOneAndDelete({_id: orderId, user: orderedBy}).exec(function(err,order){
     if (err) {
-      return res.status(400).send({
-          status: 0,
-          message: 'something went wrong'
-      })
+     return res.redirect('../views/login');
     } else{
       res.json({
-        status: 1,
+        status: 200,
         message: "Order deleted successfully",
         "data": order
       })
     }
   })
-})
+
+});
 
 //Update an Order
 router.route('/update/:id').post((req,res) => {   

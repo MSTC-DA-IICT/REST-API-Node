@@ -36,8 +36,6 @@ router.post("/login", (req, res, next) => {
         );
         res.cookie('login', key.id, { maxAge: 24 * 60 * 60 * 1000 });
         res.cookie('user', token, { maxAge: 24 * 60 * 60 * 1000 });
-        console.log(1111);
-        console.log(src);
         return res.redirect(`${src}`);
     })(req, res, next);
 
