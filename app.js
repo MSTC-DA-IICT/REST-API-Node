@@ -4,15 +4,18 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
-//Connect to DB 
-mongoose.connect("mongodb://localhost:27017/FoodDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}); //to connect to database
+//Connect to DB
+mongoose.connect(
+  "mongodb+srv://Abhishek:Password01@cluster0.1in2g.mongodb.net/GitHub?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+); //to connect to database
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
 });
-mongoose.connection.on("error", () => {
+mongoose.connection.on("error", (err) => {
   console.log("error connecting to mongo", err);
 });
 
@@ -20,7 +23,7 @@ const { verifyUser } = require("./middlewares/validateUser");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var ordersRouter = require("./routes/orders");
-require('./config/passport');
+require("./config/passport");
 const PORT = 3000;
 var app = express();
 
