@@ -197,4 +197,34 @@ router.route("/:id/comments").put((req, res) => {
   });
 });
 
+// Delete Comments from the order
+router.route("/:id/comments/:commentId").delete((req, res) => {
+  var orderId = req.params.id;
+  var commentId = req.params.commentId;
+  console.log("DELETE COMMENTS FOR ORDER ", orderId);
+  Comments.findOneAndDelete({ orderId: orderId, _id: commentId }).exec(
+    function (err, result) {
+      if (err) {
+        return res.status(400).send({
+          status: 0,
+          message: `Failed to delete comment for order id ${orderId} & comment id ${commentId}`,
+        });
+      } else {
+        if (result) {
+          res.json({
+            status: 1,
+            message: "Order Comments deleted successfully",
+            data: result,
+          });
+        } else {
+          return res.status(404).json({
+            status: 0,
+            message: `No comments found for order id ${orderId} & comment id ${commentId}`,
+          });
+        }
+      }
+    }
+  );
+});
+
 module.exports = router;
