@@ -1,17 +1,22 @@
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+
 //Connect to DB 
 mongoose.connect("mongodb://localhost:27017/FoodDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}); //to connect to database
+});
+
+//to connect to database
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
 });
+
 mongoose.connection.on("error", () => {
   console.log("error connecting to mongo", err);
 });
