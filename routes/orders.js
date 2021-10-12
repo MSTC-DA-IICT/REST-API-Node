@@ -3,6 +3,7 @@ var router = express.Router();
 const ObjectId = require('mongoose').Types.ObjectId;
 const Order = require("../models/food.model");
 const {verifyUser} = require("../middlewares/validateUser");
+const Comments = require("../models/comments.model");
 
 //Get all the orders
 var all_orders; // stores all orders
@@ -129,5 +130,32 @@ router.route('/update/:id').post((req,res) => {
     }
   })
 })
+
+// Read Comments from the order
+router.route("/:id/comments").get((req, res) => {
+  var orderId = req.params.id;
+  console.log("FETCHING COMMENTS FOR ORDER ", orderId);
+  Comments.findOne({ orderId: orderId }).exec(function (err, comment) {
+    if (err) {
+      return res.status(204).send({
+        status: 0,
+        message: `No comments found for order id ${orderId}`,
+      });
+    } else {
+      if (comment) {
+        res.json({
+          status: 1,
+          message: `Comments found for order id ${orderId}`,
+          data: comment,
+        });
+      } else {
+        return res.status(204).json({
+          status: 0,
+          message: `No comments found for order id ${orderId}`,
+        });
+      }
+    }
+  });
+});
 
 module.exports = router;
