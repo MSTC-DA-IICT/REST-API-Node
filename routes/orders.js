@@ -158,4 +158,43 @@ router.route("/:id/comments").get((req, res) => {
   });
 });
 
+// Update Comments from the order
+router.route("/:id/comments").put((req, res) => {
+  var orderId = req.params.id;
+  var data = req.body;
+  console.log("UPDATING COMMENTS FOR ORDER ", orderId);
+  Comments.findOne({ orderId: orderId, _id: data._id }).exec(function (err, comment) {
+    if (err) {
+      return res.status(204).send({
+        status: 0,
+        message: `No comments found for order id ${orderId}`,
+      });
+    } else {
+      if (comment) {
+        comment.description = data.description;
+        comment.save(function (err, result) {
+          if (err) {
+            console.log("error----------", err);
+            return res.status(400).send({
+              status: 0,
+              message: err,
+            });
+          } else {
+            res.json({
+              status: 1,
+              message: "Order Comments updated successfully",
+              data: result,
+            });
+          }
+        });
+      } else {
+        return res.status(204).json({
+          status: 0,
+          message: `No comments found for order id ${orderId}`,
+        });
+      }
+    }
+  });
+});
+
 module.exports = router;
