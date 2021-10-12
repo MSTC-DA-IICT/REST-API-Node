@@ -1,25 +1,22 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
-const User = mongoose.model(
-  "User",
+const Comments = mongoose.model(
+  "Comments",
   new mongoose.Schema({
-    username: {
+    description: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
+    orderId: {
+      type: ObjectId,
       required: true,
     },
-    number: {
-      type: Number,
+    userId: {
+      type: ObjectId,
       required: true,
-    },
-    password: {
-      type: String,
     },
   })
 );
 
-module.exports = User;
+module.exports = Comments;
