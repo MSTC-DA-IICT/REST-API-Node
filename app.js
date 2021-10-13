@@ -1,3 +1,4 @@
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -8,10 +9,13 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/FoodDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}); //to connect to database
+});
+
+//to connect to database
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
 });
+
 mongoose.connection.on("error", (err) => {
   console.log("error connecting to mongo", err);
 });
