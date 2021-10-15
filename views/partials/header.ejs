@@ -19,22 +19,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
 
-    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap"
+    rel="stylesheet"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
     />
-
-<!-- <nav class="navbar navbar-default">
+    
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    
+    <!-- <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <p class="navbar-brand">XYZ Resturant</p>
@@ -52,10 +53,16 @@
       
       <body>
 
-      <nav class="navbar navbar-default navbar-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button
+        <nav class="navbar navbar-default navbar-top" role="navigation">
+           <div class="container">
+            
+            <div class="navbar-header">
+              <span class="icon" >
+                <a href="/"><i class="fas fa-pizza-slice"></i></a>
+              </span>
+              
+
+              <button
               type="button"
               class="navbar-toggle"
               data-toggle="collapse"
@@ -68,26 +75,23 @@
             
             <a class="navbar-brand scroll" href="/">FoodHub</a>
             
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           </div>
+         
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <% if(!(loggedIn && loggedIn==true)){%>
-                
-                 
+
+              <% if(!(loggedIn && loggedIn==true)){%> 
                 <li id="home"><a href="/login">Login</a></li>
                 <%}%>
-                
-                                
+                                                
                   <li id="home"><a href="/order">Order</a></li>
                   <li id="about"><a href="#">Order History</a></li>
                   <li id="contact"><a href="#">Cancel</a></li>
                   
                 </ul>
-              </div>
-              <span class="icon" >
-                <a href="/"><i class="fas fa-pizza-slice"></i></a>
-              </span>
-        </div>
+          </div>
+
+          </div>
       </nav>
     
       <div class="container-body">
