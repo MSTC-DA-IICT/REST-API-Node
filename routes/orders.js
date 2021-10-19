@@ -9,10 +9,11 @@ const Comments = require("../models/comments.model");
 var all_orders; // stores all orders
 var total_orders = 0; // stores how many orders are there
 
-router.get("/", function (req, res, next) {
+router.get("/:ordersArrLength", function (req, res, next) {
+  var ordersArrLength = parseInt(req.params.ordersArrLength)
   var sort = {};
   sort["_id"] = -1;
-  Order.find({})
+  Order.find({}).limit(ordersArrLength)
     .sort(sort)
     .exec(function (err, orders) {
       if (err) {
@@ -23,6 +24,7 @@ router.get("/", function (req, res, next) {
         });
       } else {
         if (orders.length) {
+          
           all_orders = orders;
           total_orders = orders.length;
           return res.json({
@@ -30,6 +32,7 @@ router.get("/", function (req, res, next) {
             "Total Records": orders.length,
             data: orders,
             message: "All orders are retrived!",
+            
           });
         }
         return res.status(200).send({
