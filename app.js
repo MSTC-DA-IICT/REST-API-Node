@@ -11,7 +11,6 @@ mongoose.connect("mongodb://localhost:27017/FoodDB", {
   useUnifiedTopology: true,
 });
 
-//to connect to database
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
 });
