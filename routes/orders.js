@@ -41,6 +41,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
+//previous order for user
 router.get("/previous", function (req, res, next) {
   var userId = ObjectId(req.cookies.login);
   var sort = {};
@@ -89,7 +90,8 @@ router.post("/", function (req, res, next) {
 });
 
 //Delete an Order
-router.route("/delete/:id").delete(verifyUser, function (req, res) {
+router.delete("/delete/:id", verifyUser, function (req, res) {
+  console.log("in delete");
   var orderedBy = ObjectId(req.cookies.login);
   var orderId = req.params.id;
 
@@ -247,6 +249,28 @@ router.route("/:id/comments").put((req, res) => {
         return res.status(204).json({
           status: 0,
           message: `No comments found for order id ${orderId}`,
+        });
+      }
+    }
+  });
+});
+
+router.get("/:id", (req, res) => {
+  Order.findById(req.params.id, function (err, foundorder) {
+    if (err) {
+      console.log("get request error:", err);
+      res.status(500).json({
+        status: 500,
+        message: err.message,
+      });
+    } else {
+      if (foundorder != null) {
+        res.render("orderView", { order: foundorder });
+      } else {
+        console.log("No order found for the given ID");
+        res.status(404).json({
+          status: 404,
+          message: "Not found",
         });
       }
     }
