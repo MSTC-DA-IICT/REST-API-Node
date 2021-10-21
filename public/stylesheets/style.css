@@ -1,133 +1,259 @@
-a {
-  color: #00b7ff;
-}
-/* .container-body {
-  padding-top: 70px;
-  padding-bottom: 70px;
-  background-color: gray;
-} */
 
 body {
+  color: black;
   background-color: #ecedd1;
-}
-.footer-padding {
-  padding-bottom: 60px;
+  overflow-x: hidden;
 }
 
-.footer {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
+h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   margin-left: 0.7em;
+}
+h4{
+  font-weight: bold !important;
+  color:#000!important ;
+}
+
+a{
+  color: rgb(174, 236, 161) !important;
+  text-decoration: none!important;
+}
+a.scroll{
+  color: black !important;
+  font-weight: bold !important;
+}
+
+a:hover{
+  color: black !important;
+}
+
+.social-icon {
+    margin: 10px 10px;
+}
+
+.fs-5{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.fas{
+  transition: all 0.5s linear;
+}
+
+li{
+  font-size: 1.75rem;
+}
+
+.middle{
+  margin-left: 5%;
+}
+.middle h1{
+  font-family: "Montserrat-Black", sans-serif;
+  font-size: 45px;
+  font-weight: 900;
+
+  margin: 4em 0 0 2em;
+  display: flex; 
   width: 100%;
-  height: 60px;
-  background-color: #1abc9c;
 }
 
-.footer p {
-  margin-top: 25px;
-  font-size: 12px;
-  color: #fff;
+.bodycontent1 p{
+
+  font-family: cursive; 
+  font-size: 2rem;
+  margin-left: 4.5em;
+  padding-bottom: 10%;
+}
+
+.bodycontent2{
+  margin-top: 10%;
+  margin-left: 50px;
+  margin-bottom: 50px;
+   max-width:500px
 }
 
 /*--- NAVBAR ---*/
+.icon{
+  position: relative;
+  float: inherit;
+  margin-top: 0.3em;
+  font-size: 50px;
+}
+
 .navbar-default {
   background: #1abc9c;
   border-bottom: 1px solid #c9c6c6;
-  height: 65px;
+  height: 106px;
   margin:auto;
   
 }
 .navbar-header .navbar-toggle {
   margin-top: 12px;
+  background-color: rgb(174, 236, 161);
+  border-color: #000;
 }
 .navbar-header .navbar-brand {
+  height: 68px;
+  padding: 45px 0 5px 20px;
+  font-size: 50px;
   letter-spacing: -0.03em;
-  height: 60px;
-  padding: 30px 10px 0 0px;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 0px;
-  color: #fefefe;
   white-space: nowrap;
 }
 .navbar-default .navbar-brand:hover {
   color: #fefefe;
 }
 .navbar-default .navbar-nav {
-  background: #1abc9c;
-  margin-top: 0;
+  float: right;
+  width: fit-content;
+  margin: -5% 3% 0px 47%;
 }
 .navbar-default .navbar-nav > li > a {
   color: black;
   padding: 10px;
-  font-family: "Montserrat", serif;
   font-weight: 400;
+  font-size: larger;
 }
 
-.navbar-default .navbar-nav > li > a.selected {
-  transition: all 1s linear;
+.navbar-default .navbar-nav > li > a {
+  transition: all 0.4s linear;
+}
+
+/* Footer */
+.logo{
+  display: inline-block;
+  width: 100px;
+  height: 90px;
+  margin-left: 16px;
+}
+
+.footer {
+  padding-top: 50px;
+  position:relative;
+  clear: both;
+  text-align: center;
+  width: 100% !important;
+  background-color: #1abc9c;
+}
+.footer hr{
+  margin: 1% 5%;
+  border-top: 1px solid rgb(174, 236, 161) !important;
+}
+.footer p {
+  font-weight: bold;
+  font-size: medium;
+  padding-top: 5px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  
+  li {
+    font-size: 1.5rem !important;
+  }
+  .container{
+    padding-right: 0;
+  }
+  
+  .middle h1{
+    margin: 2em 0 0 0;
+    text-align: center!important;
+    display: block;
+    
+  }
+  .bodycontent1 p {
+    font-family: cursive;
+    text-align: center;
+    font-size: 2rem;
+    width: 80%;
+    padding-bottom: 0;
+    
+  }
+  .bodycontent2 {
+    margin-left: 25%;
+    margin-top: 0;
+  }
+  .footer {
+    padding-top: 50px;
+    position:relative;
+    clear: both;
+    text-align: center;
+    width: 100% !important;
+    background-color: #1abc9c;
+  }
+  
+  .navbar-default .navbar-nav {
+    margin: 33px -18px;
+  }
+  .icon{
+    position: relative;
+    float: inherit;
+    margin-top: 0.5em;
+    font-size: 45px;
+  }
+
+
 }
 
 @media screen and (max-width: 768px) {
   .icon{
-    display: none;
+    display: block;
+    margin: 10px 10px;
+    float: left;
+    font-size: 40px;
   }
-
-  .navbar-header .navbar-brand {
-    letter-spacing: -0.03em;
-    height: 60px;
-    margin-left: 20px;
-    padding: 30px 10px 0 0px;
-    font-size: 36px;
-    line-height: 0px;
-    font-weight: 700;
-    color: white;
-    white-space: nowrap;
+  .icon-bar {
+    background-color: #000!important;
   }
-}
-
-@media screen and (min-width: 768px) {
+  .container{
+    padding: 0 20px;
+  }
   .navbar-default {
-    height: 100px;
+    background: #1abc9c;
+    height: 80px;
+    margin: auto;
   }
-  .navbar-header {
+  .navbar-toggle:hover {
+    background-color: #bfee8a!important;
+    transition: all 0.5s linear;
+    
+  }
+  .navbar-collapse {
+  border-color: #1abc9c!important;
+  padding:9px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+  .navbar-default .navbar-nav {
+    margin:0;
+    display: flex; 
+  }
+
+  .middle h1 {
+    font-size: 34px;
+    font-weight: 900;
+    margin: 2%;
+    margin-top: 70px;
+    display: flex;
     width: 100%;
+  } 
+  .bodycontent1 p{
+    font-size: 1.75rem;
+    margin-left: 47px;
+    margin-bottom: 30px;
+    max-width: 450px;
   }
+  .bodycontent2{
+   margin-top:-15%;
+   margin-left: auto;
+  }
+
+  .navbar-header .navbar-toggle {
+    border-color:rgb(174, 236, 161)!important ;
+    margin-top: 20px;
+}
   .navbar-header .navbar-brand {
-    height: 70px;
-    padding: 40px 0 0 15px;
-    font-size: 42px;
-  }
-  .navbar-default .navbar-nav > li > a {
-    padding: 0px 20px 9px 0;
-  }
-  .navbar-default .navbar-nav > li > a:hover {
-    background-color: transparent;
-  }
-  .icon{
-    position: relative;
-    float: right;
-    margin-top: -1.7em;
-    font-size: 50px;
+    padding: 30px 10px 0 0px;
+    font-size: 36px;    
   }
 }
 
-@media screen and (min-width: 992px) {
-  .navbar-default {
-    height: 106px;
-  }
-  .navbar-header .navbar-brand {
-    height: 68px;
-    padding: 40px 0 5px 15px;
-    font-size: 44px;
-  }
-  .navbar-default .navbar-nav > li > a {
-    padding: 5px 25px 9px 0;
-  }
-  .icon{
-    position: relative;
-    float: right;
-    margin-top: -1.7em;
-    font-size: 50px;
-  }
-}

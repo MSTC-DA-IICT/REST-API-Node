@@ -3,18 +3,18 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var helmet = require("helmet");
 const mongoose = require("mongoose");
 //Connect to DB
-mongoose.connect(
-  "mongodb+srv://Abhishek:Password01@cluster0.1in2g.mongodb.net/GitHub?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-); //to connect to database
+mongoose.connect("mongodb://localhost:27017/FoodDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 mongoose.connection.on("connected", () => {
   console.log("connected to mongo");
 });
+
 mongoose.connection.on("error", (err) => {
   console.log("error connecting to mongo", err);
 });
@@ -34,6 +34,7 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
