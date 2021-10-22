@@ -14,21 +14,36 @@ router.get("/", function (req, res, next) {
 });
 
 router.get('/signup', (req, res, next) => {
+  let loggedIn = false;
+  if (req.cookies && req.cookies.user && req.cookies.login) {
+    loggedIn = isUserValid(req.cookies.user, req.cookies.login);
+  }
+
   const {
     src = '/'
   } = req.query;
-  res.render('signup', { title: 'Express', src });
+  res.render('signup', { title: 'Express', src ,loggedIn});
 });
 
 router.get('/login', (req, res, next) => {
+  let loggedIn = false;
+  if (req.cookies && req.cookies.user && req.cookies.login) {
+    loggedIn = isUserValid(req.cookies.user, req.cookies.login);
+  }
+
   const {
     src = '/'
   } = req.query;
-  res.render('login', { title: 'Express', src });
+  res.render('login', { title: 'Express', src ,loggedIn});
 });
 
 router.get('/order', verifyUser,  function(req, res, next) {
-  res.render('order', { title: 'Express' });
+  let loggedIn = false;
+  if (req.cookies && req.cookies.user && req.cookies.login) {
+    loggedIn = isUserValid(req.cookies.user, req.cookies.login);
+  }
+
+  res.render('order', { title: 'Express' ,loggedIn});
 
 });
 

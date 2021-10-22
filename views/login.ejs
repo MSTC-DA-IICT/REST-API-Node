@@ -1,15 +1,21 @@
 <!-- views/login.ejs -->
+<%- include("partials/header"); -%>
+
 <!doctype html>
 <html>
-
+<script type="text/javascript">
+let loggedIn = false;
+</script>
+  
 <head>
     <title>Node Authentication</title>
 
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <!-- load fontawesome -->
@@ -23,7 +29,7 @@
     />
     <style>
         body {
-            padding-top: 80px;
+            /* padding-top: 80px; */
         }
 
         .form-check-input {
