@@ -1,0 +1,124 @@
+<%- include("partials/header"); -%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/stylesheets/menu.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+  </head>
+  <body>
+     <div class="container-body">
+        <div class="slide-show">
+            <div class="slide fade"><img src="/images/menu1.jpg" alt=""></div>
+            <div class="slide fade"><img src="/images/menu2.jpg" alt=""></div>
+            <div class="slide fade"><img src="/images/menu3.jpg" alt=""></div>
+        </div>
+        <div class="dot-container">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <% if (type == 'starters') { %>
+              <div class="title"><h1>Starters</h1></div>
+        <%} %>
+
+        <% if (type == 'burgers') { %>
+              <div class="title"><h1>Burgers</h1></div>
+        <%} %>
+
+        <% if (type == 'pastas') { %>
+              <div class="title"><h1>Pastas</h1></div>
+        <%} %>
+
+        <% if (type == 'wraps') { %>
+              <div class="title"><h1>Wraps</h1></div>
+        <%} %>
+
+        <% if (type == 'desserts') { %>
+              <div class="title"><h1>Desserts</h1></div>
+        <%} %>       
+
+        <div class="food-items">
+             <div class="grid-main">
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>2.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+
+                
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>3.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+
+
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>1.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+
+
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>2.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+
+
+
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>1.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+
+
+                      <div class="grid-item">
+                        <img src="/images/<%= type%>3.jpg"> 
+                        <p><a style="color: black !important" href="#">Order</a></p>
+                        <div class="food-info">
+                            <p><strong>Name</strong></p>
+                            <p><strong>Ingredients</strong></p>
+                            <p><strong>Price</strong></p>
+                        </div>
+                      </div>
+                      <br>
+
+              </div>
+        </div>
+      </div>
+
+  <%- include("partials/footer"); -%>
+  </body>
+
+<script src="/js/slider.js"> 
+</script>
+</html>
+
