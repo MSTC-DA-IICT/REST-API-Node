@@ -52,4 +52,14 @@ router.get('/updateOrder', function(req, res, next) {
 
 });
 
+router.get('/menu', verifyUser,  function(req, res, next) {
+  let loggedIn = false;
+  if (req.cookies && req.cookies.user && req.cookies.login) {
+    loggedIn = isUserValid(req.cookies.user, req.cookies.login);
+  } 
+  let type  = req.query.type;
+  res.render('menu', { title: 'Express', type ,loggedIn});
+
+});
+
 module.exports = router;
