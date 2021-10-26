@@ -1,0 +1,117 @@
+.container-body {
+    width: 100%;
+    min-height: fit-content;
+}
+
+.slide-show {
+    position: relative;
+    height: 600px; 
+    overflow: hidden;
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 10s;
+  animation-name: fade;
+  animation-duration: 10s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .7}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .7}
+  to {opacity: 1}
+}
+
+.dot-container{
+    text-align: center;
+    margin-top: -30px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  font-size: 30px;
+  margin: 0 2px;
+  background-color: #000;
+  border-radius: 50%;
+  border: 3px solid #000;
+  display: inline-block;
+}
+
+.title {
+    text-align: center;
+    margin-top: 50px;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #150050;
+}
+
+.food-items{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.active, .dot:hover {
+  background-color: #fff;
+}
+
+.grid-main {
+  display: grid;
+  margin-left: 0.5%;
+  grid-template-columns: repeat(3 ,30%);  
+  grid-template-rows: 30%, 30%, 30%; 
+  grid-gap: 4.5% 5%; 
+} 
+
+.grid-item{
+  padding:10px;
+}
+
+.grid-main img{
+  width: 100%;
+  border: 3px solid;
+  border-radius: 8px;
+  border-image: linear-gradient(45deg, rgb(21, 0, 80), rgb(0,143,104)) 1;
+  margin-bottom: 3px;
+  border-bottom: none;
+  
+}
+
+.grid-item a {
+    text-align: center;
+    display: block;
+    background-color: #1abc9c;
+    padding: 5px;
+    border-radius: 8px;
+    border-bottom: none;
+    font-weight: 700;
+}
+
+.grid-item a:hover{
+    background-color: #99F3BD;
+    border: 1px solid #000;
+}
+
+.grid-item .food-info {
+  margin-top: -10px;
+  padding: 5px;
+  border: 3px solid;
+  border-image: linear-gradient(45deg, rgb(0,143,104), rgb(21, 0, 80)) 1;
+  border-top: none;
+}
+
+
+
