@@ -69,27 +69,34 @@
 }
 
 .grid-main {
-  display: grid;
+  display: inline-grid;
   margin-left: 0.5%;
-  grid-template-columns: repeat(3 ,30%);  
-  grid-template-rows: 30%, 30%, 30%; 
-  grid-gap: 4.5% 5%; 
+  grid-template-columns: repeat(4 ,20%);
+  grid-template-rows: 30%, 30%, 30%;
+  grid-gap: 4.5% 5%;
+
 } 
 
-.grid-item{
-  padding:10px;
+.grid-item{ 
+  font-family: monospace;
+  float: left;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 5px rgb(0 0 0 / 60%);
 }
 
 .grid-main img{
-  width: 100%;
-  border: 3px solid;
-  border-radius: 8px;
-  border-image: linear-gradient(45deg, rgb(21, 0, 80), rgb(0,143,104)) 1;
-  margin-bottom: 3px;
-  border-bottom: none;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 3px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom: none;
   
 }
-
+.order-button{
+  margin:0px;
+  height:50px;
+}
 .grid-item a {
     text-align: center;
     display: block;
@@ -97,19 +104,22 @@
     padding: 5px;
     border-radius: 8px;
     border-bottom: none;
+    line-height: 40px;
+    font-family: monospace;
+    height:50px;
     font-weight: 700;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .grid-item a:hover{
-    background-color: #99F3BD;
-    border: 1px solid #000;
+    background-color: #30db74;
+   
 }
 
 .grid-item .food-info {
   margin-top: -10px;
   padding: 5px;
-  border: 3px solid;
-  border-image: linear-gradient(45deg, rgb(0,143,104), rgb(21, 0, 80)) 1;
   border-top: none;
 }
 
